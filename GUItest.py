@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
-from PIL import Image
+from PIL import ImageTk,Image
 
 LARGE_FONT = ("Times", 12)
 
@@ -20,6 +20,9 @@ class MainWindow(Tk):
 
         self.geometry("%dx%d+0+0"%self.maxsize())
 
+        
+                                
+
         container=Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)   
@@ -35,17 +38,26 @@ class MainWindow(Tk):
         submenu.add_separator()
         submenu.add_command(label="Exit",command=quit)
 
+        info=Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Info",menu=info)
+        info.add_command(label="Coronatips",command=lambda:self.show_frame(CoronaTips))
+        info.add_separator()
+        info.add_command(label="COVID-19",command=lambda:self.show_frame(COVID))
+        info.add_separator()
+        info.add_command(label="Prevention",command=lambda:self.show_frame(Prevention))
+
         about=Menu(menubar, tearoff=0)
         menubar.add_cascade(label="About", menu=about)
         about.add_command(label="About and licence",command=About)
 
         Tk.config(self,menu=menubar)
 
- 		self.frames = {} 
-        for F in (StartPage, PageOne, CoronaTips, COVID, Prevention):
+        self.frames = {} 
+        for F in (StartPage, PageOne, PageTwo, CoronaTips, COVID, Prevention):
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
+        
  
         self.show_frame(StartPage)
  
@@ -53,43 +65,64 @@ class MainWindow(Tk):
         frame = self.frames[name]
         frame.tkraise()
  
-class StartPage(Frame):
+class StartPage(Frame,Tk):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
-        header=Label(self, text="                                             FIRST-AID___________", font=("Verdana", 12,"bold"),bg="grey",fg="white",width="1536",height="6",anchor=W,justify=LEFT)
+
+        
+
+        
+        header=Label(self, text="                                      FIRST-AID___________", font=("Verdana", 12,"bold"),bg="grey",fg="white",width="1536",height="6",anchor=W,justify=LEFT)
         header.pack(padx=10,pady=10)
         
         
-
-        fram1 = LabelFrame(self,text="CoronaTips",padx=20,pady=20)
-        fram1.place(x=20,y=650)
-        lbl1=Label(fram1,text="Coronavirus is a class of virus responsible for.......").pack()
-        button1=ttk.Button(fram1,text="Learn More...",command=lambda : controller.show_frame(CoronaTips)).pack(side="bottom")
         
-        fram2 = LabelFrame(self,text="COVID-19",padx=20,pady=20)
-        fram2.place(x=570,y=650)
-        lbl2=Label(fram2,text="COVID-19 is a respiratory disease caused by SARS-CoV 2 virus...").pack()
-        button2=ttk.Button(fram2,text="Learn More...",command=lambda : controller.show_frame(COVID)).pack(side="bottom")
-        
-        fram3 = LabelFrame(self,text="WHAT YOU CAN DO",padx=20,pady=20)
-        fram3.place(x=1140,y=650)
-        lbl3=Label(fram3,text="It can be prevented if the following techniques are utilized.....").pack()
-        button3=ttk.Button(fram3,text="Learn More...",command=lambda : controller.show_frame(Prevention)).pack(side="bottom")
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        lbl7=Label(self,image=photo2)
+        lbl7.image=photo2
+        lbl7.place(x=0,y=125)
 
-        fram4 = LabelFrame(self,padx=350,pady=150)
-        fram4.place(x=700,y=300)
+        footer=Label(self, text="FOOT-NOTE", font=("Verdana", 12,"bold"),bg="grey",fg="white",width="1520",height="3")
+        footer.place(x=0,y=723)
+
+       
+
+        #fram1 = LabelFrame(self,text="CoronaTips",padx=20,pady=20)
+        #fram1.place(x=50,y=600)
+        #lbl1=Label(fram1,text="Coronavirus is a class of virus responsible for.......").pack()
+        #button1=ttk.Button(fram1,text="Learn More...",command=lambda : controller.show_frame(CoronaTips)).pack(side="bottom")
+        
+        #fram2 = LabelFrame(self,text="COVID-19",padx=20,pady=20)
+        #fram2.place(x=570,y=600)
+        #lbl2=Label(fram2,text="COVID-19 is a respiratory disease caused by SARS-CoV 2 virus...").pack()
+        #button2=ttk.Button(fram2,text="Learn More...",command=lambda : controller.show_frame(COVID)).pack(side="bottom")
+        
+        #fram3 = LabelFrame(self,text="WHAT YOU CAN DO",padx=20,pady=20)
+        #fram3.place(x=1140,y=600)
+        #lbl3=Label(fram3,text="It can be prevented if the following techniques are utilized.....").pack()
+        #button3=ttk.Button(fram3,text="Learn More...",command=lambda : controller.show_frame(Prevention)).pack(side="bottom")
+
+        fram4 = LabelFrame(self,padx=200,pady=130)
+        fram4.place(x=150,y=250)
         button4=ttk.Button(fram4,text="NEXT",command=lambda : controller.show_frame(PageOne)).grid(row=2,column=2)
 
-        photo=PhotoImage(file="C:/Users/Atiqur/Desktop/GuiApp/health2.gif")
-        lbl5=Label(self,image=photo)
-        lbl5.image=photo
-        lbl5.place(x=800,y=100)
+        fram5 = LabelFrame(self,padx=200,pady=130)
+        fram5.place(x=870,y=250)
+        button5=ttk.Button(fram5,text="NEXT",command=lambda : controller.show_frame(PageTwo)).grid(row=2,column=2)
 
-        photo1=PhotoImage(file="C:/Users/Atiqur/Desktop/GuiApp/Picture5.gif")
+        #photo=PhotoImage(file="C:/Users/Atiqur/Desktop/GuiApp/health2.gif")
+        #lbl5=Label(self,image=photo)
+        #lbl5.image=photo
+        #lbl5.place(x=800,y=100)
+
+
+
+        photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
         lbl6=Label(self,image=photo1)
         lbl6.image=photo1
-        lbl6.place(x=30,y=30)
-                                
+        lbl6.place(x=30,y=20)
+
+        
                                                                                             
                                                             
  
@@ -101,6 +134,16 @@ class PageOne(Frame):
  
         button1 = ttk.Button(self, text='BACK',command=lambda : controller.show_frame(StartPage))
         button1.pack()
+
+class PageTwo(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)
+        label =ttk.Label(self, text='Page Two', font=LARGE_FONT)
+        label.pack(pady=10, padx=10)
+ 
+        button1 = ttk.Button(self, text='BACK',command=lambda : controller.show_frame(StartPage))
+        button1.pack()
+
 
 class CoronaTips(Frame):
     def __init__(self, parent, controller):
