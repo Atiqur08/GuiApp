@@ -53,7 +53,7 @@ class MainWindow(Tk):
         Tk.config(self,menu=menubar)
 
         self.frames = {} 
-        for F in (StartPage, PageOne, PageTwo, CoronaTips, COVID, Prevention):
+        for F in (StartPage, Sym1, Sym2, Pov1, Pov2, CoronaTips, COVID, Prevention):
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
@@ -116,12 +116,12 @@ class StartPage(Frame,Tk):
         fram4.place(x=150,y=302)
         label1=Label(fram4,text="It will only produce a speculated result based on the questions asked about your travel history, medical history etc. This tool can help you understand what to do next about COVID-19",wraplength=250,font=("Cambria",12)).pack()
 
-        button4=ttk.Button(fram4,text="Check",command=lambda : controller.show_frame(PageOne)).pack(side="bottom")
+        button4=ttk.Button(fram4,text="Check",command=lambda : controller.show_frame(Sym1)).pack()
 
         fram5 = LabelFrame(self,padx=125,pady=77,relief="solid",borderwidth=10)
         fram5.place(x=870,y=297)
         label2=Label(fram5,text="This tool will help the below poverty line community with financial assisstance since their income sources has been cut-off with the onset of nationwide lockdown",wraplength=250,font=("Cambria",12)).pack()
-        button5=ttk.Button(fram5,text="NEXT",command=lambda : controller.show_frame(PageTwo)).pack(side="bottom")
+        button5=ttk.Button(fram5,text="NEXT",command=lambda : controller.show_frame(Pov1)).pack()
 
         photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
         lbl6=Label(self,image=photo1)
@@ -135,7 +135,7 @@ class StartPage(Frame,Tk):
                                                                                             
                                                             
  
-class PageOne(Frame):
+class Sym1(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
         
@@ -154,7 +154,7 @@ class PageOne(Frame):
         lbl=Label(frame1,text="This is a new one").pack()
         button1 = ttk.Button(frame1, text='BACK',command=lambda : controller.show_frame(StartPage))
         button1.pack()
-        button2 = ttk.Button(frame1, text='NEXT')
+        button2 = ttk.Button(frame1, text='NEXT',command=lambda: controller.show_frame(Sym2))
         button2.pack()
 
         photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
@@ -162,8 +162,60 @@ class PageOne(Frame):
         lbl6.image=photo1
         lbl6.place(x=30,y=20)
 
+class Sym2(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)
+        
+        header=Label(self,bg="grey",fg="white",width="1536",height="8")
+        header.pack(padx=10,pady=10)
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        lbl7=Label(self,image=photo2)
+        lbl7.image=photo2
+        lbl7.place(x=0,y=125)
+        
+        footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
+        footer.place(x=0,y=722)
 
-class PageTwo(Frame):
+        frame1=LabelFrame(self,padx=20,pady=20,relief="solid",bg="white")
+        frame1.place(x=200,y=150)
+        lbl=Label(frame1,text="Check the boxes corresponding to the descriptions that best fit you:", font=("Cambria",16,"bold"),bg="white").grid(row=0,column=0,sticky=W)
+        
+        label1=Label(frame1,text="1. Did you travel internationally in the last two to three weeks?",bg="white",font=("Cambria",12)).grid(row=3,column=0,sticky=W)
+        c=Checkbutton(frame1,bg="white").grid(row=3,column=3)
+
+        label1=Label(frame1,text="2. Do you have any severe underlying medical conditions?(Heart or lung disease,diabetes etc.)",bg="white",font=("Cambria",12)).grid(row=5,column=0,sticky=W)
+        c=Checkbutton(frame1,bg="white").grid(row=5,column=3)
+
+        label1=Label(frame1,text="3. Cough",bg="white",font=("Cambria",12)).grid(row=7,column=0,sticky=W)
+        c=Checkbutton(frame1,bg="white").grid(row=7,column=3)
+
+        label1=Label(frame1,text="4. Shortness of breath/difficulty breathing",bg="white",font=("Cambria",12)).grid(row=9,column=0,sticky=W)
+        c=Checkbutton(frame1,bg="white").grid(row=9,column=3)
+
+        label1=Label(frame1,text="5. Fever and chills",bg="white",font=("Cambria",12)).grid(row=11,column=0,sticky=W)
+        c=Checkbutton(frame1,bg="white").grid(row=11,column=3)
+
+        label1=Label(frame1,text="6. Sore throat",bg="white",font=("Cambria",12)).grid(row=13,column=0,sticky=W)
+        c=Checkbutton(frame1,bg="white").grid(row=13,column=3)
+
+        label1=Label(frame1,text="7. Muscle pain",bg="white",font=("Cambria",12)).grid(row=15,column=0,sticky=W)
+        c=Checkbutton(frame1,bg="white").grid(row=15,column=3)
+
+        btn=ttk.Button(frame1,text="SUBMIT").grid(row=19,column=2,sticky=E)
+
+
+        button1 = ttk.Button(frame1, text='BACK',command=lambda : controller.show_frame(Sym1))
+        button1.grid(row=19,column=0,sticky=W)
+        #button2 = ttk.Button(frame1, text='NEXT')
+        #button2.grid()
+
+        photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
+        lbl6=Label(self,image=photo1)
+        lbl6.image=photo1
+        lbl6.place(x=30,y=20)
+
+
+class Pov1(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
 
@@ -178,16 +230,46 @@ class PageTwo(Frame):
         footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
         footer.place(x=0,y=722)
 
-        label =ttk.Label(self, text='Page Two', font=LARGE_FONT)
+        label =ttk.Label(self, text='This is the first page of Anti Pov', font=LARGE_FONT)
         label.pack(pady=10, padx=10)
  
         button1 = ttk.Button(self, text='BACK',command=lambda : controller.show_frame(StartPage))
         button1.pack()
+        button2=ttk.Button(self, text='NEXT',command=lambda : controller.show_frame(Pov2))
+        button2.pack()
 
         photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
         lbl6=Label(self,image=photo1)
         lbl6.image=photo1
         lbl6.place(x=30,y=20)
+
+class Pov2(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)
+
+        header=Label(self,bg="grey",fg="white",width="1536",height="8")
+        header.pack(padx=10,pady=10)
+        
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        lbl7=Label(self,image=photo2)
+        lbl7.image=photo2
+        lbl7.place(x=0,y=125)
+
+        footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
+        footer.place(x=0,y=722)
+
+        label =ttk.Label(self, text='Second page-POV2', font=("Cambria",16,"bold"))
+        label.pack(pady=10, padx=10)
+ 
+        button1 = ttk.Button(self, text='BACK',command=lambda : controller.show_frame(Pov1))
+        button1.pack()
+        button2=ttk.Button(self, text='NEXT')
+
+        photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
+        lbl6=Label(self,image=photo1)
+        lbl6.image=photo1
+        lbl6.place(x=30,y=20)
+
 
 
 class CoronaTips(Frame):
