@@ -5,6 +5,9 @@ from PIL import ImageTk,Image
 
 LARGE_FONT = ("Times", 12)
 
+global v1
+
+
 def Open():
         print("You did it!!")
 
@@ -53,7 +56,7 @@ class MainWindow(Tk):
         Tk.config(self,menu=menubar)
 
         self.frames = {} 
-        for F in (StartPage, Sym1, Sym2, Pov1, Pov2, CoronaTips, COVID, Prevention):
+        for F in (StartPage, Sym1, Sym2, Pov1, Pov2,Safe,Average, Risk, NoRisk, CoronaTips, COVID, Prevention):
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
@@ -136,7 +139,9 @@ class StartPage(Frame,Tk):
                                                             
  
 class Sym1(Frame):
+
     def __init__(self, parent, controller):
+
         Frame.__init__(self, parent)
         
         header=Label(self,bg="grey",fg="white",width="1536",height="8")
@@ -163,6 +168,8 @@ class Sym1(Frame):
         lbl6.place(x=30,y=20)
 
 class Sym2(Frame):
+
+
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
         
@@ -177,38 +184,190 @@ class Sym2(Frame):
         footer.place(x=0,y=722)
 
         frame1=LabelFrame(self,padx=20,pady=20,relief="solid",bg="white")
-        frame1.place(x=200,y=150)
+        frame1.place(x=400,y=150)
         lbl=Label(frame1,text="Check the boxes corresponding to the descriptions that best fit you:", font=("Cambria",16,"bold"),bg="white").grid(row=0,column=0,sticky=W)
         
-        label1=Label(frame1,text="1. Did you travel internationally in the last two to three weeks?",bg="white",font=("Cambria",12)).grid(row=3,column=0,sticky=W)
-        c=Checkbutton(frame1,bg="white").grid(row=3,column=3)
+        var1=IntVar()
+        var2=IntVar()
+        var3=IntVar()
+        var4=IntVar()
+        var5=IntVar()
+        var6=IntVar()
+        var7=IntVar()
+        var8=IntVar()
+        v1=IntVar()
+        v2=IntVar()
+        v3=IntVar()
+        v4=IntVar()
+        v5=IntVar()
+        v6=IntVar()
+        v7=IntVar()
+        v8=IntVar()
+        
+        label1=Label(frame1,text="1. Dry Cough",bg="white",font=("Cambria",12)).grid(row=3,column=0,sticky=W)
+        c1=Checkbutton(frame1,variable=var1,command=lambda:click1(var1),bg="white",activebackground="white")
+        c1.grid(row=3,column=3)
 
-        label1=Label(frame1,text="2. Do you have any severe underlying medical conditions?(Heart or lung disease,diabetes etc.)",bg="white",font=("Cambria",12)).grid(row=5,column=0,sticky=W)
-        c=Checkbutton(frame1,bg="white").grid(row=5,column=3)
+        label1=Label(frame1,text="2. Shortness of breath/difficulty breathing",bg="white",font=("Cambria",12)).grid(row=5,column=0,sticky=W)
+        c2=Checkbutton(frame1,variable=var2,command=lambda:click2(var2),bg="white",activebackground="white")
+        c2.grid(row=5,column=3)
 
-        label1=Label(frame1,text="3. Cough",bg="white",font=("Cambria",12)).grid(row=7,column=0,sticky=W)
-        c=Checkbutton(frame1,bg="white").grid(row=7,column=3)
+        label1=Label(frame1,text="3. Fever and chills",bg="white",font=("Cambria",12)).grid(row=7,column=0,sticky=W)
+        c3=Checkbutton(frame1,variable=var3,command=lambda:click3(var3),bg="white",activebackground="white")
+        c3.grid(row=7,column=3)
 
-        label1=Label(frame1,text="4. Shortness of breath/difficulty breathing",bg="white",font=("Cambria",12)).grid(row=9,column=0,sticky=W)
-        c=Checkbutton(frame1,bg="white").grid(row=9,column=3)
+        label1=Label(frame1,text="4. Sore throat",bg="white",font=("Cambria",12)).grid(row=9,column=0,sticky=W)
+        c4=Checkbutton(frame1,variable=var4,command=lambda:click4(var4),bg="white",activebackground="white")
+        c4.grid(row=9,column=3)
 
-        label1=Label(frame1,text="5. Fever and chills",bg="white",font=("Cambria",12)).grid(row=11,column=0,sticky=W)
-        c=Checkbutton(frame1,bg="white").grid(row=11,column=3)
+        label1=Label(frame1,text="5. Muscle pain",bg="white",font=("Cambria",12)).grid(row=11,column=0,sticky=W)
+        c5=Checkbutton(frame1,variable=var5,command=lambda:click5(var5),bg="white",activebackground="white")
+        c5.grid(row=11,column=3)
 
-        label1=Label(frame1,text="6. Sore throat",bg="white",font=("Cambria",12)).grid(row=13,column=0,sticky=W)
-        c=Checkbutton(frame1,bg="white").grid(row=13,column=3)
+        label1=Label(frame1,text="6. Chest Pain",bg="white",font=("Cambria",12)).grid(row=13,column=0,sticky=W)
+        c6=Checkbutton(frame1,variable=var6,command=lambda:click6(var6),bg="white",activebackground="white")
+        c6.grid(row=13,column=3)
 
-        label1=Label(frame1,text="7. Muscle pain",bg="white",font=("Cambria",12)).grid(row=15,column=0,sticky=W)
-        c=Checkbutton(frame1,bg="white").grid(row=15,column=3)
+        label1=Label(frame1,text="7. Did you travel internationally in the last two to three weeks?",bg="white",font=("Cambria",12)).grid(row=15,column=0,sticky=W)
+        c7=Checkbutton(frame1,bg="white",variable=var7,command=lambda:click7(var7),activebackground="white")
+        c7.grid(row=15,column=3)
 
-        btn=ttk.Button(frame1,text="SUBMIT").grid(row=19,column=2,sticky=E)
+        label1=Label(frame1,text="8. Do you have any severe underlying medical conditions?(Heart or lung disease,diabetes etc.)",bg="white",font=("Cambria",12)).grid(row=17,column=0,sticky=W)
+        c8=Checkbutton(frame1,bg="white",variable=var8,command=lambda:click8(var8),activebackground="white")
+        c8.grid(row=17,column=3)
 
 
-        button1 = ttk.Button(frame1, text='BACK',command=lambda : controller.show_frame(Sym1))
+        my_list=[]
+        
+        def click1(var1):
+            global v1
+            v1=var1
+            return v1
+        
+        def click2(var2):
+            global v2
+            v2=var2
+            return v2
+            
+        def click3(var3):
+            global v3
+            v3=var3
+            return v3
+        
+        def click4(var4):
+            global v4
+            v4=var4
+            return v4
+    
+        def click5(var5):
+            global v5
+            v5=var5
+            return v5
+        def click6(var6):
+            global v6
+            v6=var6
+            return v6
+        def click7(var7):
+            global v7
+            v7=var7
+            return v7
+        def click8(var8):
+            global v8
+            v8=var8
+            return v8
+
+        V1=click1(var1)
+        V2=click2(var2)
+        V3=click3(var3)
+        V4=click4(var4)
+        V5=click5(var5)
+        V6=click6(var6)
+        V7=click7(var7)
+        V8=click8(var8)
+        
+        
+
+        def submit():
+            if(V1.get()==1):
+                my_list.append(V1)
+            else:
+                pass
+            if(V2.get()==1):
+                my_list.append(V2)
+            else:
+                pass
+            if(V3.get()==1):
+                my_list.append(V3)
+            else:
+                pass
+            if(V4.get()==1):
+                my_list.append(V4)
+            else:
+                pass
+            if(V5.get()==1):
+                my_list.append(V5)
+            else:
+                pass
+            if(V6.get()==1):
+                my_list.append(V6)
+            else:
+                pass
+            if(V7.get()==1):
+                my_list.append(V7)
+            else:
+                pass
+            if(V8.get()==1):
+                my_list.append(V8)
+            else:
+                pass
+            if(len(my_list)==0):
+                controller.show_frame(Safe)
+            else:
+                pass
+            if(len(my_list)==4):
+                controller.show_frame(Average)
+            else:
+                pass
+            if(len(my_list)>4):
+                controller.show_frame(Risk)
+            else:
+                pass
+            if(len(my_list)<4):
+                controller.show_frame(NoRisk)
+            else:
+                pass
+        def uncheck():
+            c1.deselect()
+            V1=0
+            c2.deselect()
+            V2=0
+            c3.deselect()
+            V3=0
+            c4.deselect()
+            V4=0
+            c5.deselect()
+            V5=0
+            c6.deselect()
+            V6=0
+            c7.deselect()
+            V7=0
+            c8.deselect()
+            V8=0
+            my_list.clear()
+        def sub_unch():
+            submit()
+            uncheck()
+
+        btn=ttk.Button(frame1,text="SUBMIT",command=sub_unch).grid(row=19,column=2,sticky=E)
+
+        
+        def back_unch():
+            controller.show_frame(Sym1)
+            uncheck()
+
+        button1 = ttk.Button(frame1, text='BACK',command=back_unch)
         button1.grid(row=19,column=0,sticky=W)
-        #button2 = ttk.Button(frame1, text='NEXT')
-        #button2.grid()
-
+        
         photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
         lbl6=Label(self,image=photo1)
         lbl6.image=photo1
@@ -269,6 +428,113 @@ class Pov2(Frame):
         lbl6=Label(self,image=photo1)
         lbl6.image=photo1
         lbl6.place(x=30,y=20)
+
+class Safe(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)
+
+        header=Label(self,text="YOU ARE SAFE!!!!",bg="grey",fg="white",width="1536",height="8")
+        header.pack(padx=10,pady=10)
+        
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        lbl7=Label(self,image=photo2)
+        lbl7.image=photo2
+        lbl7.place(x=0,y=125)
+
+        footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
+        footer.place(x=0,y=722)
+
+        label =ttk.Label(self, text='Second page-POV2', font=("Cambria",16,"bold"))
+        label.pack(pady=10, padx=10)
+ 
+        button1 = ttk.Button(self, text='CHECK AGAIN',command=lambda :controller.show_frame(Sym2))
+        button1.pack()
+        button2=ttk.Button(self, text='HOME', command=lambda: controller.show_frame(StartPage)).pack()
+
+        photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
+        lbl6=Label(self,image=photo1)
+        lbl6.image=photo1
+        lbl6.place(x=30,y=20)
+
+class Average(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)
+
+        header=Label(self,text="You look fine,but if you are concerned then you can go check it at the doctor",bg="grey",fg="white",width="1536",height="8")
+        header.pack(padx=10,pady=10)
+        
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        lbl7=Label(self,image=photo2)
+        lbl7.image=photo2
+        lbl7.place(x=0,y=125)
+
+        footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
+        footer.place(x=0,y=722)
+
+        label =ttk.Label(self, text='Second page-POV2', font=("Cambria",16,"bold"))
+        label.pack(pady=10, padx=10)
+ 
+        button1 = ttk.Button(self, text='CHECK AGAIN',command=lambda :controller.show_frame(Sym2))
+        button1.pack()
+        button2=ttk.Button(self, text='HOME', command=lambda: controller.show_frame(StartPage)).pack()
+
+        photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
+        lbl6=Label(self,image=photo1)
+        lbl6.image=photo1
+        lbl6.place(x=30,y=20)
+class Risk(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)
+
+        header=Label(self,text="HIGH RISK!!!",bg="grey",fg="white",width="1536",height="8")
+        header.pack(padx=10,pady=10)
+        
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        lbl7=Label(self,image=photo2)
+        lbl7.image=photo2
+        lbl7.place(x=0,y=125)
+
+        footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
+        footer.place(x=0,y=722)
+
+        label =ttk.Label(self, text='Second page-POV2', font=("Cambria",16,"bold"))
+        label.pack(pady=10, padx=10)
+ 
+        button1 = ttk.Button(self, text='CHECK AGAIN',command=lambda :controller.show_frame(Sym2))
+        button1.pack()
+        button2=ttk.Button(self, text='HOME', command=lambda: controller.show_frame(StartPage)).pack()
+
+        photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
+        lbl6=Label(self,image=photo1)
+        lbl6.image=photo1
+        lbl6.place(x=30,y=20)
+class NoRisk(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)
+
+        header=Label(self,text="The symptoms are normal",bg="grey",fg="white",width="1536",height="8")
+        header.pack(padx=10,pady=10)
+        
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        lbl7=Label(self,image=photo2)
+        lbl7.image=photo2
+        lbl7.place(x=0,y=125)
+
+        footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
+        footer.place(x=0,y=722)
+
+        label =ttk.Label(self, text='Second page-POV2', font=("Cambria",16,"bold"))
+        label.pack(pady=10, padx=10)
+ 
+        button1 = ttk.Button(self, text='CHECK AGAIN',command=lambda :controller.show_frame(Sym2))
+        button1.pack()
+        button2=ttk.Button(self, text='HOME', command=lambda: controller.show_frame(StartPage)).pack()
+
+        photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
+        lbl6=Label(self,image=photo1)
+        lbl6.image=photo1
+        lbl6.place(x=30,y=20)
+
 
 
 
