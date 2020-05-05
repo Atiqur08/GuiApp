@@ -118,7 +118,7 @@ class StartPage(Frame,Tk):
         fram4.place(x=150,y=302)
         label1=Label(fram4,text="It will only produce a speculated result based on the questions asked about your travel history, medical history etc. This tool can help you understand what to do next about COVID-19",wraplength=431,font=("Cambria",16)).pack()
 
-        button4=ttk.Button(fram4,text="CHECK",command=lambda : controller.show_frame(Sym1)).place(x=180,y=170)
+        button4=ttk.Button(fram4,text="CHECK",command=lambda : controller.show_frame(Sym1)).place(x=170,y=170)
 
         fram5 = LabelFrame(self,padx=29,pady=95,relief="solid",borderwidth=10)
         fram5.place(x=870,y=297)
@@ -153,13 +153,34 @@ class Sym1(Frame):
         footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
         footer.place(x=0,y=722)
 
-        frame1=LabelFrame(self,padx=200,pady=150,relief="solid")
-        frame1.place(x=400,y=300)
-        lbl=Label(frame1,text="This is a new one").pack()
+        frame1=LabelFrame(self,padx=50,pady=50,relief="solid",bg="white")
+        frame1.place(x=330,y=250)
+        lbl=Label(frame1,text="COVID-19 Screening Tool",bg="white",font=("Times",18,"bold"),anchor=W,justify=LEFT)
+        lbl.grid(row=0,column=0,sticky=W)
+
+        label=Label(frame1,bg="white").grid(row=1,column=0)
+        label=Label(frame1,bg="white").grid(row=2,column=0)
+
+        label=Label(frame1,text="-> You will answer a few questions about symptoms, travel etc.",wraplength=400,bg="white",font=("Times",14),anchor=W,justify=LEFT)
+        label.grid(row=3,column=0,sticky=W)
+
+        label=Label(frame1,bg="white").grid(row=4,column=0)
+
+        label=Label(frame1,text="-> Your answers will not be shared publicly without your permission",wraplength=400,bg="white",font=("Times",14),anchor=W,justify=LEFT)
+        label.grid(row=5,column=0,sticky=W)
+
+        label=Label(frame1,bg="white").grid(row=6,column=0)
+
+        label=Label(frame1,text="-> Recommendations provided by this tool do not constitute medical advice and should not be used to diagnose or treat medical conditions",wraplength=700,bg="white",font=("Times",14),anchor=W,justify=LEFT)
+        label.grid(row=7,column=0,sticky=W)
+
+        label=Label(frame1,bg="white").grid(row=8,column=0)
+        label=Label(frame1,bg="white").grid(row=9,column=0)
+
         button1 = ttk.Button(frame1, text='BACK',command=lambda : controller.show_frame(StartPage))
-        button1.pack()
-        button2 = ttk.Button(frame1, text='NEXT',command=lambda: controller.show_frame(Sym2))
-        button2.pack()
+        button1.grid(row=10,column=0,sticky=W)
+        button2 = ttk.Button(frame1, text='PROCEED',command=lambda: controller.show_frame(Sym2))
+        button2.grid(row=10,column=1,sticky=W)
 
         photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
         lbl6=Label(self,image=photo1)
