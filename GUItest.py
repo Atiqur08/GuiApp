@@ -5,14 +5,11 @@ from PIL import ImageTk,Image
 
 LARGE_FONT = ("Times", 12)
 
-global v1
-
-
 def Open():
         print("You did it!!")
 
 def About():
-       messagebox.showinfo("About and Licence","This software is free and open source and is created by students of Jorhat Engineering College, Assam, India")
+       messagebox.showinfo("About","This GUI application is created by 5 students(Atiqur, Bivob, Arunabh, Saurav, Radai) of Jorhat Engineering College, Assam, India")
  
 class MainWindow(Tk):
     def __init__(self, *args, **kwargs):
@@ -51,7 +48,7 @@ class MainWindow(Tk):
 
         about=Menu(menubar, tearoff=0)
         menubar.add_cascade(label="About", menu=about)
-        about.add_command(label="About and licence",command=About)
+        about.add_command(label="About",command=About)
 
         Tk.config(self,menu=menubar)
 
@@ -88,8 +85,6 @@ class StartPage(Frame,Tk):
         footer=Label(self, text="THIS IS THE FOOT-NOTE", font=("Verdana", 12,"bold"),bg="grey",fg="white",width="1520",height="3",anchor=N,justify=CENTER)
         footer.place(x=0,y=722)
 
-       
-
         #fram1 = LabelFrame(self,text="CoronaTips",padx=20,pady=20)
         #fram1.place(x=50,y=600)
         #lbl1=Label(fram1,text="Coronavirus is a class of virus responsible for.......").pack()
@@ -114,15 +109,15 @@ class StartPage(Frame,Tk):
         lbl8.image=photo4
         lbl8.place(x=870,y=185)
 
-        fram4 = LabelFrame(self,padx=30,pady=80,relief="solid",borderwidth=10)
+        fram4 = LabelFrame(self,padx=30,pady=80,relief="solid",borderwidth=10,bg="white")
         fram4.place(x=150,y=302)
-        label1=Label(fram4,text="It will only produce a speculated result based on the questions asked about your travel history, medical history etc. This tool can help you understand what to do next about COVID-19",wraplength=431,font=("Cambria",16)).pack()
+        label1=Label(fram4,text="It will only produce a speculated result based on the questions asked about your travel history, medical history etc. This tool can help you understand what to do next about COVID-19",wraplength=431,bg="white",font=("Cambria",16)).pack()
 
         button4=ttk.Button(fram4,text="CHECK",command=lambda : controller.show_frame(Sym1)).place(x=170,y=170)
 
-        fram5 = LabelFrame(self,padx=29,pady=95,relief="solid",borderwidth=10)
+        fram5 = LabelFrame(self,padx=29,pady=95,relief="solid",borderwidth=10,bg="white")
         fram5.place(x=870,y=297)
-        label2=Label(fram5,text="This tool will help the below poverty line community with financial assisstance since their income sources has been cut-off with the onset of nationwide lockdown",wraplength=430,font=("Cambria",16)).pack()
+        label2=Label(fram5,text="This tool will help the below poverty line community with financial assisstance since their income sources has been cut-off with the onset of nationwide lockdown",wraplength=430,bg="white",font=("Cambria",16)).pack()
         button5=ttk.Button(fram5,text="PROCEED",command=lambda : controller.show_frame(Pov1)).place(x=180,y=160)
 
         photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
@@ -410,20 +405,20 @@ class Pov1(Frame):
         footer.place(x=0,y=722)
 
         frame=LabelFrame(self,bg="white",padx=50,pady=50,borderwidth=5,relief="solid")
-        frame.place(x=480,y=210)
+        frame.place(x=370,y=210)
 
         label =Label(frame, text='ABOUT & ELIGIBILITY', font=("Cambria",18,"bold"),bg="white")
         label.grid(row=0,column=1,sticky=W)
 
-        label1=Label(frame,text="* This tool was conceived with the aim of providing financial assistance to economically backward community and to support them during the period of lockdown",wraplength=500,bg="white",font=("Cambria",14),anchor=W,justify=LEFT)
+        label1=Label(frame,text="* This tool was conceived with the aim of providing financial assistance to economically backward community and to support them during the period of lockdown",wraplength=700,bg="white",font=("Cambria",14),anchor=W,justify=LEFT)
         label1.grid(row=1,column=1,sticky=W)
         label2=Label(frame,text="* This initiative is only for daily wage workers and other economically backward groups",wraplength=500,bg="white",font=("Cambria",14),anchor=W,justify=LEFT)
         label2.grid(row=2,column=1,sticky=W)
-        label3=Label(frame,text="* How to apply: You have to fill up a form in the next page with your personal & family info, your financial background etc",wraplength=500,bg="white",font=("Cambria",14),anchor=W,justify=LEFT)
+        label3=Label(frame,text="* How to apply: You have to fill up a form in the next page with your personal & family info, your financial background etc",wraplength=700,bg="white",font=("Cambria",14),anchor=W,justify=LEFT)
         label3.grid(row=3,column=1,sticky=W)
         label4=Label(frame,text="* Only one member from each family can apply",wraplength=500,bg="white",font=("Cambria",14),anchor=W,justify=LEFT)
         label4.grid(row=4,column=1,sticky=W)
-        label5=Label(frame,text="* After submitting your form, we will contact you shortly after",wraplength=500,bg="white",font=("Cambria",14),anchor=W,justify=LEFT)
+        label5=Label(frame,text="* After submitting your form, we will contact you shortly after",wraplength=700,bg="white",font=("Cambria",14),anchor=W,justify=LEFT)
         label5.grid(row=5,column=1,sticky=W)
         button1 = ttk.Button(frame, text='GO BACK',command=lambda : controller.show_frame(StartPage))
         button1.grid(row=7,column=1,sticky=N)
@@ -690,7 +685,7 @@ class NoRisk(Frame):
 
 
 
-class CoronaTips(Frame):
+class Prevention(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
         header=Label(self,bg="grey",fg="white",width="1536",height="8")
@@ -704,10 +699,37 @@ class CoronaTips(Frame):
         footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
         footer.place(x=0,y=722)
 
-        label=Label(self, text='TIPS', font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
-        button3=ttk.Button(self, text='HOME',command=lambda : controller.show_frame(StartPage))
-        button3.pack()
+        frame=LabelFrame(self,bg="white",padx=50,pady=30,relief="solid",borderwidth=5)
+        frame.place(x=350,y=200)
+
+        label=Label(frame, text='What You Can Do', font=("Times",18,"bold"),bg="white")
+        label.grid(row=0,column=0)
+
+        label=Label(frame,bg="white").grid(row=1,column=0)
+
+        label=Label(frame, text='* Washing your hands is the best way to help you stay healthy. Wet your hands with clean, running water. Turn off the tap and apply soap. Lather your hands by rubbing them together. Get the backs of your hands, between your fingers, and under your nails. Scrub your hands for 20 seconds. Rinse your hands under clean, running water.',wraplength=700,anchor=W,justify=LEFT, font=("Times",14),bg="white")
+        label.grid(row=2,column=0,sticky=W)
+
+        label=Label(frame,bg="white").grid(row=3,column=0)
+
+        label=Label(frame, text='* The main way COVID-19 spreads is between people. Physical distancing helps to stop the spread. Avoid physical contact with other people. Stay at least 6 feet away from people when outside your home.',wraplength=700,anchor=W,justify=LEFT, font=("Times",14),bg="white")
+        label.grid(row=4,column=0,sticky=W)
+
+        label=Label(frame,bg="white").grid(row=5,column=0)
+
+        label=Label(frame, text='* If you have COVID-19 or have symptoms, isolate yourself in your home and stay away from others, including those in your household.',wraplength=700,anchor=W,justify=LEFT, font=("Times",14),bg="white")
+        label.grid(row=6,column=0,sticky=W)
+
+        label=Label(frame,bg="white").grid(row=7,column=0)
+
+        label=Label(frame, text='* There is currently no vaccine or cure for COVID-19 but researchers are working to find one.',wraplength=700,anchor=W,justify=LEFT, font=("Times",14),bg="white")
+        label.grid(row=8,column=0,sticky=W)
+
+        label=Label(frame,bg="white").grid(row=9,column=3)
+        label=Label(frame,bg="white").grid(row=10,column=3)
+
+        button3=ttk.Button(frame, text='HOME',command=lambda : controller.show_frame(StartPage))
+        button3.grid(row=11,column=1,sticky=W)
 
         photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
         lbl6=Label(self,image=photo1)
@@ -729,11 +751,37 @@ class COVID(Frame):
         footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
         footer.place(x=0,y=722)
 
-        label=Label(self, text='About COVID-19', font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
- 
-        button3=ttk.Button(self, text='HOME',command=lambda : controller.show_frame(StartPage))
-        button3.pack()
+        frame=LabelFrame(self,bg="white",padx=50,pady=50,relief="solid",borderwidth=5)
+        frame.place(x=350,y=200)
+
+        label=Label(frame, text='About COVID-19', font=("Times",18,"bold"),bg="white")
+        label.grid(row=0,column=0)
+
+        label=Label(frame,bg="white").grid(row=1,column=0)
+
+        label=Label(frame, text='* COVID-19 is the new respiratory disease spreading around the world and it is caused by a coronavirus. COVID-19 is short for “coronavirus disease 2019.”',wraplength=700,anchor=W,justify=LEFT, font=("Times",14),bg="white")
+        label.grid(row=2,column=0,sticky=W)
+
+        label=Label(frame,bg="white").grid(row=3,column=0)
+
+        label=Label(frame, text='* The virus is thought to spread mainly between people who are in close contact with one another (about 6 feet) and through respiratory droplets produced when an infected person coughs or sneezes.',wraplength=700,anchor=W,justify=LEFT, font=("Times",14),bg="white")
+        label.grid(row=4,column=0,sticky=W)
+
+        label=Label(frame,bg="white").grid(row=5,column=0)
+
+        label=Label(frame, text='* People are most contagious when they are the sickest. But those who don’t have a lot of symptoms can still pass the virus on to others.',wraplength=700,anchor=W,justify=LEFT, font=("Times",14),bg="white")
+        label.grid(row=6,column=0,sticky=W)
+
+        label=Label(frame,bg="white").grid(row=7,column=0)
+
+        label=Label(frame, text='* There is currently no vaccine or cure for COVID-19 but researchers are working to find one.',wraplength=700,anchor=W,justify=LEFT, font=("Times",14),bg="white")
+        label.grid(row=8,column=0,sticky=W)
+
+        label=Label(frame,bg="white").grid(row=9,column=3)
+        label=Label(frame,bg="white").grid(row=10,column=3)
+
+        button3=ttk.Button(frame, text='HOME',command=lambda : controller.show_frame(StartPage))
+        button3.grid(row=11,column=1,sticky=W)
 
         photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
         lbl6=Label(self,image=photo1)
@@ -742,7 +790,7 @@ class COVID(Frame):
 
 
 
-class Prevention(Frame):
+class CoronaTips(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
         header=Label(self,bg="grey",fg="white",width="1536",height="8")
@@ -755,11 +803,37 @@ class Prevention(Frame):
 
         footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
         footer.place(x=0,y=722)
-        label=Label(self, text='WHAT YOU CAN DO', font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
- 
-        button3=ttk.Button(self, text='HOME',command=lambda : controller.show_frame(StartPage))
-        button3.pack()
+        frame=LabelFrame(self,bg="white",padx=50,pady=50,relief="solid",borderwidth=5)
+        frame.place(x=350,y=180)
+
+        label=Label(frame, text='Supporting Yourself', font=("Times",18,"bold"),bg="white")
+        label.grid(row=0,column=0)
+
+        label=Label(frame,bg="white").grid(row=1,column=0)
+
+        label=Label(frame, text='* Eat well-balanced meals. This means lots of fruits, vegetables, whole grains, and protein. Try to limit the amount of sugar and salt. Stay hydrated. Drink water with every meal, in between each meal, and when you work out. Make sure to sleep. Try to get seven to nine hours if possible.',wraplength=700,anchor=W,justify=LEFT, font=("Times",14),bg="white")
+        label.grid(row=2,column=0,sticky=W)
+
+        label=Label(frame,bg="white").grid(row=3,column=0)
+
+        label=Label(frame, text='* Exercise, stretch, or take walks outside while practicing physical distancing. Movement can raise your level of endorphins, the chemicals that promote a positive mindset.',wraplength=700,anchor=W,justify=LEFT, font=("Times",14),bg="white")
+        label.grid(row=4,column=0,sticky=W)
+
+        label=Label(frame,bg="white").grid(row=5,column=0)
+
+        label=Label(frame, text='* Practice mindfulness, which can help you stay calm. Various meditation apps are offering free services and specific COVID-19 programming.',wraplength=700,anchor=W,justify=LEFT, font=("Times",14),bg="white")
+        label.grid(row=6,column=0,sticky=W)
+
+        label=Label(frame,bg="white").grid(row=7,column=0)
+
+        label=Label(frame, text='* Limit your trips to the grocery store or pharmacy as much as possible. When you go, try to only buy what you need to be sure there’s enough for everyone else.',wraplength=700,anchor=W,justify=LEFT, font=("Times",14),bg="white")
+        label.grid(row=8,column=0,sticky=W)
+
+        label=Label(frame,bg="white").grid(row=9,column=3)
+        
+
+        button3=ttk.Button(frame, text='HOME',command=lambda : controller.show_frame(StartPage))
+        button3.grid(row=11,column=1,sticky=W)
 
         photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
         lbl6=Label(self,image=photo1)
