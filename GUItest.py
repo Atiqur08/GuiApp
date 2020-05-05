@@ -728,7 +728,7 @@ class Risk(Frame):
         frame=LabelFrame(self,padx=100,pady=100,bg="white",relief="solid",borderwidth=5)
         frame.place(x=300,y=200)
 
-        label =Label(frame, text='WARNING!!',bg="white",font=("Times",38,"bold"))
+        label =Label(frame, text='EMERGENCY!!',bg="white",font=("Times",38,"bold"))
         label.pack()
 
         label=Label(frame,bg="white").pack()
