@@ -80,7 +80,7 @@ class StartPage(Frame,Tk):
         
         
         
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Perfect1.png"))
         lbl7=Label(self,image=photo2)
         lbl7.image=photo2
         lbl7.place(x=0,y=125)
@@ -145,7 +145,7 @@ class Sym1(Frame):
         
         header=Label(self,bg="grey",fg="white",width="1536",height="8")
         header.pack(padx=10,pady=10)
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Perfect1.png"))
         lbl7=Label(self,image=photo2)
         lbl7.image=photo2
         lbl7.place(x=0,y=125)
@@ -174,7 +174,7 @@ class Sym2(Frame):
         
         header=Label(self,bg="grey",fg="white",width="1536",height="8")
         header.pack(padx=10,pady=10)
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Perfect1.png"))
         lbl7=Label(self,image=photo2)
         lbl7.image=photo2
         lbl7.place(x=0,y=125)
@@ -380,7 +380,7 @@ class Pov1(Frame):
         header=Label(self,text="INTRODUCTION",font=("Cambria",16,"bold"),bg="grey",fg="white",width="1536",height="8")
         header.pack(padx=10,pady=10)
         
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Perfect1.png"))
         lbl7=Label(self,image=photo2)
         lbl7.image=photo2
         lbl7.place(x=0,y=125)
@@ -421,7 +421,7 @@ class Pov2(Frame):
         header=Label(self,text="REGISTRATION",font=("Cambria",16,"bold"),bg="grey",fg="white",width="1536",height="8")
         header.pack(padx=10,pady=10)
         
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Perfect1.png"))
         lbl7=Label(self,image=photo2)
         lbl7.image=photo2
         lbl7.place(x=0,y=125)
@@ -567,7 +567,7 @@ class Safe(Frame):
         header=Label(self,text="YOU ARE SAFE!!!!",bg="grey",fg="white",width="1536",height="8")
         header.pack(padx=10,pady=10)
         
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Perfect1.png"))
         lbl7=Label(self,image=photo2)
         lbl7.image=photo2
         lbl7.place(x=0,y=125)
@@ -594,7 +594,7 @@ class Average(Frame):
         header=Label(self,text="You look fine,but if you are concerned then you can go check it at the doctor",bg="grey",fg="white",width="1536",height="8")
         header.pack(padx=10,pady=10)
         
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Perfect1.png"))
         lbl7=Label(self,image=photo2)
         lbl7.image=photo2
         lbl7.place(x=0,y=125)
@@ -620,7 +620,7 @@ class Risk(Frame):
         header=Label(self,text="HIGH RISK!!!",bg="grey",fg="white",width="1536",height="8")
         header.pack(padx=10,pady=10)
         
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Perfect1.png"))
         lbl7=Label(self,image=photo2)
         lbl7.image=photo2
         lbl7.place(x=0,y=125)
@@ -646,7 +646,7 @@ class NoRisk(Frame):
         header=Label(self,text="The symptoms are normal",bg="grey",fg="white",width="1536",height="8")
         header.pack(padx=10,pady=10)
         
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Perfect1.png"))
         lbl7=Label(self,image=photo2)
         lbl7.image=photo2
         lbl7.place(x=0,y=125)
@@ -675,7 +675,7 @@ class CoronaTips(Frame):
         header=Label(self,bg="grey",fg="white",width="1536",height="8")
         header.pack(padx=10,pady=10)
         
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Perfect1.png"))
         lbl7=Label(self,image=photo2)
         lbl7.image=photo2
         lbl7.place(x=0,y=125)
@@ -700,7 +700,7 @@ class COVID(Frame):
         header=Label(self,bg="grey",fg="white",width="1536",height="8")
         header.pack(padx=10,pady=10)
         
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Perfect1.png"))
         lbl7=Label(self,image=photo2)
         lbl7.image=photo2
         lbl7.place(x=0,y=125)
@@ -727,7 +727,7 @@ class Prevention(Frame):
         header=Label(self,bg="grey",fg="white",width="1536",height="8")
         header.pack(padx=10,pady=10)
         
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
+        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Perfect1.png"))
         lbl7=Label(self,image=photo2)
         lbl7.image=photo2
         lbl7.place(x=0,y=125)
