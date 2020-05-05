@@ -56,7 +56,7 @@ class MainWindow(Tk):
         Tk.config(self,menu=menubar)
 
         self.frames = {} 
-        for F in (StartPage, Sym1, Sym2, Pov1, Pov2,Safe,PovFinal,Average, Risk, NoRisk, CoronaTips, COVID, Prevention):
+        for F in (StartPage, Sym1, Sym2, Pov1, Pov2,Safe,Average, Risk, NoRisk, CoronaTips, COVID, Prevention):
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
@@ -104,25 +104,25 @@ class StartPage(Frame,Tk):
         #fram3.place(x=1140,y=600)
         #lbl3=Label(fram3,text="It can be prevented if the following techniques are utilized.....").pack()
         #button3=ttk.Button(fram3,text="Learn More...",command=lambda : controller.show_frame(Prevention)).pack(side="bottom")
-        photo3=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/test1.png"))
+        photo3=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/test1.png"))
         lbl7=Label(self,image=photo3)
         lbl7.image=photo3
         lbl7.place(x=148,y=185)
 
-        photo4=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Poverty1.png"))
+        photo4=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/Poverty1.png"))
         lbl8=Label(self,image=photo4)
         lbl8.image=photo4
         lbl8.place(x=870,y=185)
 
-        fram4 = LabelFrame(self,padx=25,pady=80,relief="solid",borderwidth=10)
+        fram4 = LabelFrame(self,padx=30,pady=80,relief="solid",borderwidth=10)
         fram4.place(x=150,y=302)
-        label1=Label(fram4,text="It will only produce a speculated result based on the questions asked about your travel history, medical history etc. This tool can help you understand what to do next about COVID-19",wraplength=431,font=("Cambria",16,"bold")).pack()
+        label1=Label(fram4,text="It will only produce a speculated result based on the questions asked about your travel history, medical history etc. This tool can help you understand what to do next about COVID-19",wraplength=431,font=("Cambria",16)).pack()
 
         button4=ttk.Button(fram4,text="CHECK",command=lambda : controller.show_frame(Sym1)).place(x=180,y=170)
 
-        fram5 = LabelFrame(self,padx=25,pady=95,relief="solid",borderwidth=10)
+        fram5 = LabelFrame(self,padx=29,pady=95,relief="solid",borderwidth=10)
         fram5.place(x=870,y=297)
-        label2=Label(fram5,text="This tool will help the below poverty line community with financial assisstance since their income sources has been cut-off with the onset of nationwide lockdown",wraplength=430,font=("Cambria",16,"bold")).pack()
+        label2=Label(fram5,text="This tool will help the below poverty line community with financial assisstance since their income sources has been cut-off with the onset of nationwide lockdown",wraplength=430,font=("Cambria",16)).pack()
         button5=ttk.Button(fram5,text="PROCEED",command=lambda : controller.show_frame(Pov1)).place(x=180,y=160)
 
         photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
@@ -429,6 +429,8 @@ class Pov2(Frame):
         footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
         footer.place(x=0,y=722)
 
+        name=StringVar()
+
         frame=LabelFrame(self,padx=20,pady=20,bg="white",borderwidth=5,relief="solid")
         frame.place(x=200,y=150)
 
@@ -443,7 +445,7 @@ class Pov2(Frame):
         label2=Label(frame, text="*Full Name",font=("Times",12),bg="white",anchor=W,justify=LEFT)
         label2.grid(row=3,column=0,sticky=W)
 
-        entry1=ttk.Entry(frame,width=50)
+        entry1=ttk.Entry(frame,textvariable=name,width=50)
         entry1.grid(row=3,column=3)
 
         label=Label(frame,bg="white").grid(row=4,column=0)
@@ -508,29 +510,29 @@ class Pov2(Frame):
         label7=Label(frame,text="*Mobile Number",bg="white",font=("Times",12),anchor=W,justify=LEFT)
         label7.grid(row=15,column=0,sticky=W)
 
-        entry5=ttk.Entry(frame,width=40)
-        entry5.grid(row=15,column=3)
+        entry6=ttk.Entry(frame,width=40)
+        entry6.grid(row=15,column=3)
 
         label=Label(frame,bg="white").grid(row=16,column=0)
         label=Label(frame,bg="white").grid(row=17,column=0)
 
+        def do_something():
+            messagebox.showerror("Error!","You have not filled all the field(s)!!")
 
 
-
-
-        
-        #label3=Label(frame, text="'*' marked fields are compulsory",font=("Cambria",10),bg="white",anchor=W,justify=LEFT)
-        #label3.grid(row=1,column=0,sticky=W)
-        
-        #label4=Label(frame, text="'*' marked fields are compulsory",font=("Cambria",10),bg="white",anchor=W,justify=LEFT)
-        #label4.grid(row=1,column=0,sticky=W)
         def submit():
-            controller.show_frame(PovFinal)
-            entry1.delete(0,'end')
-            entry2.delete(0,'end')
-            entry3.delete(0,'end')
-            entry4.delete(0,'end')
-            var.set(None)
+            if((len(entry1.get())==0) or (len(entry2.get())==0) or (len(entry3.get())==0) or (len(entry4.get())==0) or (len(entry5.get())==0) or (len(entry6.get())==0) or (var.get()==0)):
+                do_something()
+            else:
+                messagebox.showinfo("Registration Successfull!!","Thank You "+name.get()+". We will contact you shortly for further details.")
+                controller.show_frame(StartPage)
+                entry1.delete(0,'end')
+                entry2.delete(0,'end')
+                entry3.delete(0,'end')
+                entry4.delete(0,'end')
+                entry5.delete(0,'end')
+                entry6.delete(0,'end')
+                var.set(None)
 
         def back():
             controller.show_frame(Pov1)
@@ -538,6 +540,8 @@ class Pov2(Frame):
             entry2.delete(0,'end')
             entry3.delete(0,'end')
             entry4.delete(0,'end')
+            entry5.delete(0,'end')
+            entry6.delete(0,'end')
             var.set(None)
 
 
@@ -545,43 +549,16 @@ class Pov2(Frame):
 
  
         button1 = ttk.Button(frame, text='BACK',command=back)
-        button1.grid(row=19,column=2,sticky=N)
+        button1.grid(row=20,column=2,sticky=N)
         button2=ttk.Button(frame, text='SUBMIT',command=submit)
-        button2.grid(row=18,column=2,sticky=N)
+        button2.grid(row=19,column=2,sticky=N)
 
         photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
         lbl6=Label(self,image=photo1)
         lbl6.image=photo1
         lbl6.place(x=30,y=20)
 
-class PovFinal(Frame):
 
-    def __init__(self, parent, controller):
-
-        Frame.__init__(self, parent)
-        
-        header=Label(self,bg="grey",fg="white",width="1536",height="8")
-        header.pack(padx=10,pady=10)
-        photo2=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/Perfect1.png"))
-        lbl7=Label(self,image=photo2)
-        lbl7.image=photo2
-        lbl7.place(x=0,y=125)
-        
-        footer=Label(self,bg="grey",fg="white",width="1520",height="5",anchor=N,justify=CENTER)
-        footer.place(x=0,y=722)
-
-        frame1=LabelFrame(self,padx=200,pady=150,relief="solid")
-        frame1.place(x=400,y=300)
-        lbl=Label(frame1,text="Thank you .....We will contact you shortly. Stay safe").pack()
-        button1 = ttk.Button(frame1, text='BACK',command=lambda : controller.show_frame(Pov2))
-        button1.pack()
-        button2 = ttk.Button(frame1, text='HOME',command=lambda: controller.show_frame(StartPage))
-        button2.pack()
-
-        photo1=ImageTk.PhotoImage(Image.open("C:/Users/Atiqur/Desktop/GuiApp/New.png"))
-        lbl6=Label(self,image=photo1)
-        lbl6.image=photo1
-        lbl6.place(x=30,y=20)
 
 class Safe(Frame):
     def __init__(self, parent, controller):
