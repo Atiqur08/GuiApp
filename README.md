@@ -17,4 +17,6 @@
 
 ### 4. The system must have PILLOW python package installed 
 
+### 5. Images of application window interfaces have been provided which are stored at 'App Images' folder. The application should produce the same output on the system
+
 ## Basically, this app is composed of two tools-Symptom checker and Anti-poverty initiative. Both these components have a very crude foundation and their development requisites are introductory knowledge on python language and Tkinter coding. While the latter is just a small step towards the realization of a proactive solution per se, the symptom checker is an extensive model, although not to be followed!!!. We developed this app with the intention of mitigating the tropical issue at hand, viz. THE CORONAVIRUS(SARS-CoV2 virus) which is responsible for fatal respirarory disorder called COVID-19.
